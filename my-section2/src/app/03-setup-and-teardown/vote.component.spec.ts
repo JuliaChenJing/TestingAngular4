@@ -5,7 +5,7 @@ describe('VoteComponent', () => {
 
   beforeEach(() => {
     //Arrange
-    //component = new VoteComponent();
+    component = new VoteComponent();
     console.log("---------- beforeEach")
   });
 
@@ -16,7 +16,7 @@ describe('VoteComponent', () => {
 
   beforeAll(() => {
     //Arrange
-    component = new VoteComponent();
+    //component = new VoteComponent();
     console.log("---------- beforeAll")
   });
 
