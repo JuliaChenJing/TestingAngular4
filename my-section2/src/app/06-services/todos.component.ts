@@ -7,7 +7,6 @@ export class TodosComponent {
 
   constructor(private service: TodoService) {}
 
-  //will only test ngOnInit in this demo
   ngOnInit() { 
     this.service.getTodos().subscribe(t => this.todos = t);
   }
