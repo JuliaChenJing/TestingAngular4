@@ -4,6 +4,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
     selector: 'voter',
     template: `
+    <h1> 3 voter component works </h1>
     <div class="voter">
         <i 
             class="glyphicon glyphicon-menu-up vote-button"
@@ -42,28 +43,28 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class VoterComponent {
     @Input() othersVote = 0;
     @Input() myVote = 0;
-    
+
     @Output() myVoteChanged = new EventEmitter();
-    
-    upVote(){
+
+    upVote() {
         if (this.myVote == 1)
             return;
-        
+
         this.myVote++;
 
         this.myVoteChanged.emit({ myVote: this.myVote });
     }
-    
-    downVote(){
+
+    downVote() {
         if (this.myVote == -1)
             return;
-            
+
         this.myVote--;
-        
+
         this.myVoteChanged.emit({ myVote: this.myVote });
     }
 
-    get totalVotes(): number { 
-      return this.othersVote + this.myVote;
+    get totalVotes(): number {
+        return this.othersVote + this.myVote;
     }
 }
