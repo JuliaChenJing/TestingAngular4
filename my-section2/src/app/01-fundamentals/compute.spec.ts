@@ -1,5 +1,5 @@
 import { compute } from './compute';
-describe('compute', () => {
+describe('Compute', () => {
     it('should return 0 if input is negative', () => {
         const result = compute(-1);
         expect(result).toBe(0);

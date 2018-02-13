@@ -1,6 +1,6 @@
 import {greet} from './greet';
 
-describe('greet', () => {
+describe('Greet', () => {
     it('should include the name in the message', () => {
         expect(greet('mosh')).toContain('mosh');
     })
