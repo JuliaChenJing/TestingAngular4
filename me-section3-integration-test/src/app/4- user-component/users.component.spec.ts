@@ -1,11 +1,14 @@
-import { UsersComponent } from './users.component'; 
-import { UserService } from './user.service'; 
+import { UsersComponent } from './users.component';
+import { UserService } from './user.service';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/throw'; 
+
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/observable/from';
+import 'rxjs/add/observable/empty';
 
 describe('UsersComponent', () => {
-  let component: UsersComponent; 
-  let service: UserService; 
+  let component: UsersComponent;
+  let service: UserService;
 
   beforeEach(() => {
     service = new UserService(null);
@@ -13,8 +16,8 @@ describe('UsersComponent', () => {
   });
 
   it('should set users property with the users retrieved from the server', () => {
-    let users = [ 1, 2, 3 ];
-    spyOn(service, 'getUsers').and.returnValue(Observable.from([ users ]));
+    let users = [1, 2, 3];
+    spyOn(service, 'getUsers').and.returnValue(Observable.from([users]));
 
     component.ngOnInit();
 
@@ -22,7 +25,7 @@ describe('UsersComponent', () => {
   });
 
   describe('When deleting a user', () => {
-    let user; 
+    let user;
 
     beforeEach(() => {
       component.users = [
@@ -30,7 +33,7 @@ describe('UsersComponent', () => {
         { id: 2 },
       ];
 
-      user = component.users[0]; 
+      user = component.users[0];
     });
 
     it('should remove the selected user from the list if the user confirms deletion', () => {
@@ -72,17 +75,17 @@ describe('UsersComponent', () => {
       spyOn(window, 'confirm').and.returnValue(true);
       // We need to change the implementation of alert, otherwise 
       // it will popup a dialog when running our unit tests.
-      spyOn(window, 'alert').and.callFake(() => {}); 
+      spyOn(window, 'alert').and.callFake(() => { });
       spyOn(service, 'deleteUser').and.returnValue(Observable.throw('error'));
 
       component.deleteUser(user);
 
       expect(component.users.indexOf(user)).toBeGreaterThan(-1);
     });
-  
+
     it('should display an error if the call to the server fails', () => {
       spyOn(window, 'confirm').and.returnValue(true);
-      let spy = spyOn(window, 'alert').and.callFake(() => {}); 
+      let spy = spyOn(window, 'alert').and.callFake(() => { });
       spyOn(service, 'deleteUser').and.returnValue(Observable.throw('error'));
 
       component.deleteUser(user);
