@@ -6,7 +6,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./voter.component.css']
 })
 export class VoterComponent {
-  @Input() othersVote = 0;
+  @Input() othersVote = 30;
   @Input() myVote = 0;
 
   @Output() vote = new EventEmitter();

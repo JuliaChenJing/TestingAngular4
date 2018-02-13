@@ -6,9 +6,11 @@ describe('VoterComponent', () => {
   let fixture: ComponentFixture<VoterComponent>;
 
   beforeEach(() => {
+
     TestBed.configureTestingModule({
       declarations: [VoterComponent]
     });
+
     fixture = TestBed.createComponent(VoterComponent);
     component = fixture.componentInstance;
     //fixture.nativeElement
@@ -28,7 +30,7 @@ describe('VoterComponent', () => {
   it('should high light the upvote button if I have upvoted', () => {
     component.myVote = 1;
     fixture.detectChanges();
-    let debugElement = fixture.debugElement.query(By.css('.glyphicon.menu.up'));
+    let debugElement = fixture.debugElement.query(By.css('.glyphicon-menu-up'));
     expect(debugElement.classes['highlighted']).toBeTruthy();
   });
 });
